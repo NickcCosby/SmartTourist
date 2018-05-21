@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { PlacesService } from './places.service';
 
-describe('PlacesServiceService', () => {
+describe('PlacesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [PlacesService]

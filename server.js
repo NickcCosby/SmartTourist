@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-app.use(express.static(__dirname + "/MEANBeltExam/dist/MEANBeltExam"));
+app.use(express.static(__dirname + "/SmartTourist/dist/SmartTourist"));
 app.set('views', __dirname + "/../client/views");
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());

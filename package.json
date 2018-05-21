@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/NickCCosby/SmartTourist#readme",
   "dependencies": {
+    "@types/auth0-js": "^8.11.2",
+    "auth0-js": "^9.5.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongoose": "^5.1.1"

@@ -23,4 +23,6 @@ import { UserService } from './user.service';
   providers: [PlacesService, UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+ }

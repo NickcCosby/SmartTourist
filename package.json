@@ -1,0 +1,32 @@
+{
+  "name": "smarttourist",
+  "version": "1.0.0",
+  "description": "A WebApp that helps you find interesting things around you when traveling.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickCCosby/SmartTourist.git"
+  },
+  "keywords": [
+    "Angular",
+    "Travel",
+    "Places",
+    "API",
+    "GeoLocation"
+  ],
+  "author": "Nick, Ian, Emily",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickCCosby/SmartTourist/issues"
+  },
+  "homepage": "https://github.com/NickCCosby/SmartTourist#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.1"
+  }
+}

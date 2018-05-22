@@ -1,3 +1,32 @@
-<p>
-  main works!
-</p>
+<div>
+  <h2>Hello {{user.name}}</h2>
+  <h3>Filter</h3>
+  <form>
+    <label>Type of Place:
+      <select name="type">
+        <option value="all">All</option>
+        <option value="food">Food</option>
+        <option value=""></option>
+      </select>
+    </label>
+    <label>Range from User: <input name="range" type="number" value="10"> - miles</label>
+    <input type="submit" value="Filter">
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Place Name</th>
+        <th>Distance Away</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let place of places">
+      <tr *ngIf="place.name">
+        <td>{{place.name}}</td>
+        <td>{{place.location}}</td>
+        <td><button (click)="onVisited(place)">Been There</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

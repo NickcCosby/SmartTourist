@@ -24,7 +24,7 @@ export class PlacesService {
       return callback(null);
     }
     const whitelist = ['amusement_park', 'museum' , 'aquarium', 'zoo', 'park', 'art_gallery', 'casino', 
-    'night_club', 'spa', 'stadium','library', 'movie_theater', 'campground', 'painter'];
+    'night_club', 'stadium','library', 'movie_theater', 'campground'];
     let params :{location:string, radius:string, key:string, rankby:string, pagetoken:string, type:string} = 
     {
       location:this.location.coords.latitude + "," + this.location.coords.longitude,
@@ -34,7 +34,7 @@ export class PlacesService {
       pagetoken:undefined,
       type:whitelist[0]
     };
-    var all = {};
+    var all = [];
     var callCount = 0;
     var errGot = false;
     try{
@@ -60,7 +60,7 @@ export class PlacesService {
               }
               data[iii].distance = this.getDistance([{lat:this.location.coords.latitude, long:this.location.coords.longitude}, {lat: data[iii].geometry.location.lat, long: data[iii].geometry.location.lng}]);
             }  
-            all[data[0].types[0]] = data;
+            all.push(data);
             callCount++
          }
         }).catch((err)=>{console.log(err); errGot = true;});

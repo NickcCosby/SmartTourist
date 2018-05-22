@@ -1,0 +1,20 @@
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: left;
+}
+table, th, td {
+    border: 1px solid black;
+    vertical-align: top;
+}
+th, td {
+    padding: 10px;
+    line-height: 20px;
+    height: 20px;
+}
+th{
+    background-color: #D3D3D3;
+}
+
+/* tr:nth-child(even) {background-color:#D3D3D3} */

@@ -88,7 +88,7 @@ export class PlacesService {
       this.location = null;
     }
   }
-  getDistance(point: [{lat:number, long:number}, {lat:number, long:number}])
+  getDistance(point: [{lat:number, long:number}, {lat:number, long:number}]) : number
   {
     var R = 6371; // Radius of the earth in km
     var dLat = (point[1].lat - point[0].lat) * Math.PI / 180;  // deg2rad below
@@ -98,6 +98,38 @@ export class PlacesService {
       Math.cos(point[0].lat * Math.PI / 180) * Math.cos(point[1].lat * Math.PI / 180) * 
       (1 - Math.cos(dLon))/2;
 
-    return R * 2 * Math.asin(Math.sqrt(a));
+    var distance =  R * 2 * Math.asin(Math.sqrt(a));
+    //convert to miles
+    var miles = distance * 0.62137
+    //prettify
+    miles = Math.floor(miles*10)/10;
+    return miles
   }
+  removeSeen(places, user)
+  {
+    for(let iii = 0; iii < places.length; iii++)
+    {
+      for(let zzz = 0; zzz < places[iii].length; zzz++)
+      {
+        if(user.seen.includes(places[iii][zzz].place_id))
+        {
+          places[iii].splice(zzz,1);
+        }
+      }
+    }
+  }
+  removeRange(places, newRange)
+  {
+    for(let iii = 0; iii < places.length; iii++)
+    {
+      for(let zzz = 0; zzz < places[iii].length; zzz++)
+      {
+        if(places[iii][zzz].distance > newRange)
+        {
+          places[iii].splice(zzz, 1);
+        }
+      }
+    }
+  }
+  
 }

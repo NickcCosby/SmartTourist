@@ -23,52 +23,46 @@ export class PlacesService {
     {
       return callback(null);
     }
-    const whitelist = ['amusement_park', 'aquarium', 'library', 'art_gallery', 'movie_theater', 'museum', 
-      'cafe', 'campground', 'night_club', 'painter', 'park', 'casino', 'spa', 'stadium', 'zoo'];
-    let params :{location:string, radius:string, key:string, rankby:string, pagetoken:string} = 
+    const whitelist = ['amusement_park', 'museum' , 'aquarium', 'zoo', 'park', 'art_gallery', 'casino', 
+    'night_club', 'spa', 'stadium','library', 'movie_theater', 'campground', 'painter'];
+    let params :{location:string, radius:string, key:string, rankby:string, pagetoken:string, type:string} = 
     {
       location:this.location.coords.latitude + "," + this.location.coords.longitude,
       radius:this.range.toString(),
       key:this.apiKey,
       rankby:"prominence",
-      pagetoken:null
+      pagetoken:undefined,
+      type:whitelist[0]
     };
-    var all = [];
+    var all = {};
     var callCount = 0;
     var errGot = false;
     try{
-      while(all.length < 30 && !errGot)
+      for(let newType of whitelist)
       {
-        console.log("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + 
-        (params.pagetoken == null?"location=" + params.location + "&radius=" + params.radius + "&rankby=" + params.rankby:
-        "pagetoken="+params.pagetoken) + "&key=" + params.key);
-        await new Promise((resolve, reject)=>this._http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + 
-          (params.pagetoken == null?"location=" + params.location + "&radius=" + params.radius + "&rankby=" + params.rankby:
-          "pagetoken="+params.pagetoken) + "&key=" + params.key
+        params.type = newType;
+        await new Promise((resolve, reject)=>this._http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + params.key +  
+        "&location=" + params.location + "&radius=" + params.radius + "&rankby=" + params.rankby + "&type=" + params.type
           ).subscribe(resolve))
         .then((result:any)=>{
           var data = result.results;
-          for(let iii in data)
+          if(data.length != 0)
           {
-            if(data[iii].opening_hours != undefined)
+            for(let iii in data)
             {
-              if(data[iii].opening_hours.open_now === false)
+              if(data[iii].opening_hours != undefined)
               {
-                data.splice(iii, 1);
-                continue;
+                if(data[iii].opening_hours.open_now === false)
+                {
+                  data.splice(iii, 1);
+                  continue;
+                }
               }
-            }
-            if(!data[iii].types.some(element=>{return whitelist.includes(element)}))
-            {
-              data.splice(iii, 1);
-              continue;
-            }
-            data[iii].distance = this.getDistance([{lat:this.location.coords.latitude, long:this.location.coords.longitude}, {lat: data.geometry.location.lat, long: data.geometry.location.lng}]);
-          }  
-          all = all.concat(data);
-          console.log(result);
-          params.pagetoken = result.next_page_token;
-          callCount++
+              data[iii].distance = this.getDistance([{lat:this.location.coords.latitude, long:this.location.coords.longitude}, {lat: data[iii].geometry.location.lat, long: data[iii].geometry.location.lng}]);
+            }  
+            all[data[0].types[0]] = data;
+            callCount++
+         }
         }).catch((err)=>{console.log(err); errGot = true;});
       }
     }
@@ -77,8 +71,6 @@ export class PlacesService {
       console.error("bombed out during while loop");
       return null;
     }
-    console.log(all);
-    console.log(callCount);
     callback(all);
   }
   async getLocation()

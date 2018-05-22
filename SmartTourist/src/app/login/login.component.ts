@@ -13,9 +13,29 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    console.log("you clicked the log in button!")
-    this.auth.login();
-  }
+  // login() {
+  //   console.log("you clicked the log in button!")
+  //   this.auth.login();
+  // }
 
+  // location="";
+
+  // getLocation() {
+  //   function showPosition(position) {
+  //     console.log("HERE")
+  //     this.location = "Latitude: " + position.coords.latitude + 
+  //     "<br>Longitude: " + position.coords.longitude;
+  //   }
+
+  //   if (navigator.geolocation) {
+  //     console.log("WHAT")
+  //     console.log(navigator.geolocation.getCurrentPosition);
+  //   } else { 
+  //     this.location = "Geolocation is not supported by this browser.";
+  //   }
+
+  //   console.log("?")
+  // }
+
+  
 }

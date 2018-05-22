@@ -14,7 +14,7 @@ export class PlacesService {
   }
   setRange(_range:number)
   {
-    this.range = _range;
+    this.range = (_range*1666.67);
   }
   async getNearby(callback:Function)
   {

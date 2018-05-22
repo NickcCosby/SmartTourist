@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PlacesService } from './places.service';
 import { UserService } from './user.service';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,

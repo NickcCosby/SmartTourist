@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log("you clicked the log in button!")
     this.auth.login();
   }
 

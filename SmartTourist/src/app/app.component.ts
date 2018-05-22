@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
 
+import { PlacesService } from './places.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

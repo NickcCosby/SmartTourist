@@ -14,10 +14,13 @@ export class MainComponent implements OnInit {
   currentRange: any;
   currentFilter: any;
   filter: any;
+  map: any;
+  useMap: boolean
 
   constructor(private _route: ActivatedRoute, private placesservice: PlacesService) { }
 
   ngOnInit() {
+    this.useMap = true;
     this.filter = {type: "all", range: 0.6};
     this.currentRange = this.filter.range;
     this.currentFilter = this.filter.type;
@@ -50,6 +53,11 @@ export class MainComponent implements OnInit {
       if(this.places[0] == undefined){
         console.log("ARRAY EMPTIED")
         this.places = undefined;
+      }
+      this.map = {
+        lat:this.placesservice.location.coords.latitude,
+        long:this.placesservice.location.coords.longitude,
+        zoom:15,
       }
     });
   }

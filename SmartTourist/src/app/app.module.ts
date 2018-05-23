@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +24,8 @@ import { CallbackComponent } from './callback/callback.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    AgmCoreModule.forRoot({apiKey:'AIzaSyAGIkqbumDrmgh73oEcNKovzAzOYQnqjuM'}),
+    FormsModule
   ],
   providers: [PlacesService, UserService],
   bootstrap: [AppComponent]

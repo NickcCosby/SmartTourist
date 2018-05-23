@@ -7,7 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class PlacesService {
   private apiKey: string;
   private range: number;
-  private location: any;
+  public location: any;
   constructor(private _http: HttpClient) 
   {  
     this.apiKey = "AIzaSyAMUDBCHuBqiqYw15QSvN1JF43Cw6QIUaI";

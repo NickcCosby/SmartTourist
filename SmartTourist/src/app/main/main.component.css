@@ -16,5 +16,9 @@ th, td {
 th{
     background-color: #D3D3D3;
 }
+agm-map
+{
+    height:650px;
+}
 
 /* tr:nth-child(even) {background-color:#D3D3D3} */

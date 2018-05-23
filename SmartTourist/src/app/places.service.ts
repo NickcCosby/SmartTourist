@@ -14,7 +14,7 @@ export class PlacesService {
   }
   setRange(_range:number)
   {
-    this.range = _range;
+    this.range = (_range*1666.67);
   }
   async getNearby(callback:Function)
   {
@@ -24,7 +24,7 @@ export class PlacesService {
       return callback(null);
     }
     const whitelist = ['amusement_park', 'museum' , 'aquarium', 'zoo', 'park', 'art_gallery', 'casino', 
-    'night_club', 'spa', 'stadium','library', 'movie_theater', 'campground', 'painter'];
+    'night_club', 'stadium','library', 'movie_theater', 'campground'];
     let params :{location:string, radius:string, key:string, rankby:string, pagetoken:string, type:string} = 
     {
       location:this.location.coords.latitude + "," + this.location.coords.longitude,

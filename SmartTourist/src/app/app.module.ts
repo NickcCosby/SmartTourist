@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,7 +24,8 @@ import { CallbackComponent } from './callback/callback.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AgmCoreModule.forRoot({apiKey:'AIzaSyAGIkqbumDrmgh73oEcNKovzAzOYQnqjuM'})
+    AgmCoreModule.forRoot({apiKey:'AIzaSyAGIkqbumDrmgh73oEcNKovzAzOYQnqjuM'}),
+    FormsModule
   ],
   providers: [PlacesService, UserService],
   bootstrap: [AppComponent]

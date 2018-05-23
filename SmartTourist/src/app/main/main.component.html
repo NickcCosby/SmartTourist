@@ -1,15 +1,23 @@
 <div>
-  <h2>Hello {{user.name}}</h2>
+  <!-- <h2>Hello {{user.name}}</h2> -->
   <h3>Filter</h3>
-  <form>
-    <label>Type of Place:
-      <select name="type">
-        <option value="all">All</option>
-        <option value="food">Food</option>
-        <option value=""></option>
+  <form (submit)="onFilter()">
+    <label>Type:
+      <select name="type" [(ngModel)]="filter.type">
+        <option value="all">All</option>s
+        <option value="amusement_park">Amusement Park</option>
+        <option value="aquarium">Aquarium</option>
+        <option value="art_gallery">Art Gallery</option>
+        <option value="campground">Campground</option>
+        <option value="casino">Casino</option>
+        <option value="park">Park</option>
+        <option value="library">Library</option>
+        <option value="movie_theater">Movie Theater</option>
+        <option value="museum">Museum</option>
+        <option value="night_club">Night Club</option>
       </select>
     </label>
-    <label>Range from User: <input name="range" type="number" value="10"> - miles</label>
+    <label>Distance Range: <input name="range" type="number" value="0.6" step="0.1" min="0" [(ngModel)]="filter.range"> - Miles</label>
     <input type="submit" value="Filter">
   </form>
 
@@ -17,16 +25,19 @@
     <thead>
       <tr>
         <th>Place Name</th>
-        <th>Distance Away</th>
+        <th>Distance (Miles)</th>
         <th>Actions</th>
       </tr>
-    </thead>
-    <tbody *ngFor="let place of places">
-      <tr *ngIf="place.name">
-        <td>{{place.name}}</td>
-        <td>{{place.location}}</td>
-        <td><button (click)="onVisited(place)">Been There</button></td>
+    </thead> 
+    <tbody *ngFor="let number of [0,1,2,3,4]" >
+      <tr *ngFor="let place of places">
+        <td *ngIf="place[number]">{{place[number].name}}</td>
+        <td *ngIf="place[number]">{{place[number].distance}}</td>
+        <td *ngIf="place[number]"><button (click)="onVisited(place[number])">Been There</button></td>
       </tr>
     </tbody>
   </table>
+  <div *ngIf="places===undefined">
+    <h2>LOADING.....</h2>
+  </div>
 </div>

@@ -120,15 +120,20 @@ export class PlacesService {
   }
   removeRange(places, newRange)
   {
+    var splice=[];    
     for(let iii = 0; iii < places.length; iii++)
     {
       for(let zzz = 0; zzz < places[iii].length; zzz++)
       {
         if(places[iii][zzz].distance > newRange)
         {
-          places[iii].splice(zzz, 1);
+          splice.push(zzz);
         }
       }
+      for(let s=splice.length-1; 0<=s; s--){
+        places[iii].splice(splice[s],1);       
+      }
+      splice=[];
     }
   }
   

@@ -32,6 +32,11 @@ export class MainComponent implements OnInit {
     this.placesservice.getNearby(data => {
       this.places = data;
       console.log(this.places)
+      this.map = {
+        lat:this.placesservice.location.coords.latitude,
+        long:this.placesservice.location.coords.longitude,
+        zoom:15,
+      }
       if(filter !== "all"){
         var splice=[];
         for(let x=0; x<this.places.length; x++){
@@ -53,11 +58,6 @@ export class MainComponent implements OnInit {
       if(this.places[0] == undefined){
         console.log("ARRAY EMPTIED")
         this.places = undefined;
-      }
-      this.map = {
-        lat:this.placesservice.location.coords.latitude,
-        long:this.placesservice.location.coords.longitude,
-        zoom:15,
       }
     });
   }

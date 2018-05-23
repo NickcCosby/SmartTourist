@@ -21,9 +21,7 @@ export class MainComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private router: Router, private placesservice: PlacesService, private authService: UserService) { }
 
   ngOnInit() {
-<<<<<<< HEAD
     this.useMap = true;
-=======
     if(this.authService.getProfile() === undefined){
       console.log("not logged in!")
       this.router.navigate(['/']);
@@ -33,7 +31,6 @@ export class MainComponent implements OnInit {
       this.user = this.authService.getProfile();
       console.log(this.user);   
     }
->>>>>>> auth_config
     this.filter = {type: "all", range: 0.6};
     this.currentRange = 0.6
     this.ShowAll(this.currentRange);

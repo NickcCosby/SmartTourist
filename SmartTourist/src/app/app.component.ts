@@ -11,6 +11,5 @@ import { PlacesService } from './places.service';
 export class AppComponent {
   title = 'SmartTourist';
   constructor(public auth: UserService){
-    auth.handleAuthentication();
   }
 }

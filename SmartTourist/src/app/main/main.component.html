@@ -21,7 +21,7 @@
     <input type="submit" value="Filter">
   </form>
 
-  <table>
+  <table *ngIf="!useMap">
     <thead>
       <tr>
         <th>Place Name</th>
@@ -37,6 +37,37 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="map">
+    <agm-map *ngIf="useMap"
+      [latitude]="map.lat"
+      [longitude]="map.long"
+      [zoom]="map.zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="true">
+      <agm-marker
+        [latitude]="map.lat"
+        [longitude]="map.long">
+        <agm-info-window>
+          <h3>YOU</h3>
+        </agm-info-window>
+    </agm-marker>
+      <div *ngFor="let number of [0,1,2,3,4]"> 
+        <div *ngFor="let place of places">      
+          <agm-marker *ngIf="place[number]"
+            [latitude]="place[number].geometry.location.lat"
+            [longitude]="place[number].geometry.location.lng"
+            [label]="place[number].types[0]"
+            [markerDraggable]="false">
+            <agm-info-window>
+              <h3>{{place[number].name}}</h3>
+              <p>{{place[number].distance}} mi</p>
+              <button (click)="onVisited(place[number])">Been There</button>
+            </agm-info-window>
+          </agm-marker>
+        </div>
+      </div>
+    </agm-map>
+  </div>
   <div *ngIf="places===undefined">
     <h2>LOADING.....</h2>
   </div>

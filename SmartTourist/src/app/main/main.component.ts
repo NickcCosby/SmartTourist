@@ -13,10 +13,13 @@ export class MainComponent implements OnInit {
   places: any;
   currentRange: any;
   filter: any;
+  map: any;
+  useMap: boolean
 
   constructor(private _route: ActivatedRoute, private placesservice: PlacesService) { }
 
   ngOnInit() {
+    this.useMap = true;
     this.filter = {type: "all", range: 0.6};
     this.currentRange = 0.6
     this.ShowAll(this.currentRange);
@@ -26,7 +29,12 @@ export class MainComponent implements OnInit {
     this.placesservice.setRange(range);
     this.placesservice.getNearby(data => {
       this.places = data;
-      console.log("Places ",this.places)
+      console.log("Places ",this.places);
+      this.map = {
+        lat:this.placesservice.location.coords.latitude,
+        long:this.placesservice.location.coords.longitude,
+        zoom:15,
+      }
     });
   }
 

@@ -3,25 +3,8 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button
-          class="btn btn-primary btn-margin"
-          routerLink="/">
-            Home
-        </button>
-  
-        <button
-          class="btn btn-primary btn-margin"
-          *ngIf="!auth.isAuthenticated()"
-          (click)="auth.login()">
-            Log In
-        </button>
-  
-        <button
-          class="btn btn-primary btn-margin"
-          *ngIf="auth.isAuthenticated()"
-          (click)="auth.logout()">
-            Log Out
-        </button>
+        <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.isAuthenticated()">Log In Lock</button>
+        <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">Log Out Lock</button>
       </div>
     </div>
   </nav>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../places.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-main',
@@ -17,10 +19,19 @@ export class MainComponent implements OnInit {
   map: any;
   useMap: boolean
 
-  constructor(private _route: ActivatedRoute, private placesservice: PlacesService) { }
+  constructor(private _route: ActivatedRoute, private router: Router, private placesservice: PlacesService, private authService: UserService) { }
 
   ngOnInit() {
     this.useMap = true;
+    if(this.authService.getProfile() === undefined){
+      console.log("not logged in!")
+      this.router.navigate(['/']);
+    }
+    else{
+      console.log("you are logged in ");
+      this.user = this.authService.getProfile();
+      console.log(this.user);   
+    }
     this.filter = {type: "all", range: 0.6};
     this.currentRange = this.filter.range;
     this.currentFilter = this.filter.type;

@@ -22,8 +22,9 @@ export class MainComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private router: Router, private placesservice: PlacesService, private authService: UserService) { }
 
   ngOnInit() {
+    console.log("the localstorage in the main is ", localStorage)
     this.useMap = true;
-    if(this.authService.getProfile() === undefined){
+    if(!localStorage['access_token']){
       console.log("not logged in!")
       this.router.navigate(['/']);
     }

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(public auth: UserService) { }
 
   ngOnInit() {
+    this.auth.logout();
 
   }
 

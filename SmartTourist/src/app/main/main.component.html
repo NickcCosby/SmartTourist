@@ -62,7 +62,7 @@
             <agm-info-window>
               <h3>{{place[number].name}}</h3>
               <p>{{place[number].distance}} mi</p>
-              <button (click)="onVisited(place[number])">Been There</button>
+              <button (click)="addPlace(place[number].place_id)">Been There</button>
             </agm-info-window>
           </agm-marker>
         </div>

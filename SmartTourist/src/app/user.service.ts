@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 import { myConfig } from './user.config';
+import { HttpClient } from '@angular/common/http';
 
 declare var Auth0Lock: any;
 @Injectable({
@@ -10,6 +11,7 @@ declare var Auth0Lock: any;
 })
 export class UserService {
   profile: any;
+  user = {"name": "", "user_id": ""}
   lock = new Auth0Lock('huPUT41yTZj0urj70vsUB5UEvj26uus5', 'smarttourist.auth0.com', 
   {
     theme: {
@@ -36,14 +38,33 @@ export class UserService {
       }
   });
 
-  constructor(public router: Router) { 
+  constructor(private _http: HttpClient, public router: Router) { 
     this.lock.on('authenticated', (authResult) => {
       console.log(authResult);
       this.setSession(authResult);
       this.profile = authResult.idTokenPayload;
+      this.user.name = this.profile.name;
+      this.user.user_id = this.profile.sub;
+      this.addUser();
       this.router.navigate(['/home']); 
     });
     
+  }
+  public addUser(){
+    let obs = this._http.get('/users/' + this.user.user_id);
+    obs.subscribe(data => {
+      console.log("the data from find one user is", data)
+      if(data['user'] === null){
+        let observable = this._http.post('/users', this.user);
+        observable.subscribe(datas => {
+          console.log("the data back from adding user is", datas)
+        })        
+      }
+    })
+  };
+
+  public addPlace(userId, placeId){
+    return this._http.put('/users/' + userId, {place: placeId})
   }
 
   public login() {

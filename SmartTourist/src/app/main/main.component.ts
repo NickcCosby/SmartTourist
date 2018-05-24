@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.useMap = true;
-    if(this.authService.getProfile() === undefined){
+    if(!localStorage['access_token']){
       console.log("not logged in!")
       this.router.navigate(['/']);
     }
@@ -36,6 +36,13 @@ export class MainComponent implements OnInit {
     this.currentRange = this.filter.range;
     this.currentFilter = this.filter.type;
     this.ShowAll(this.filter.range, this.filter.type);
+  }
+
+  addPlace(placeId){
+    let observable = this.authService.addPlace(this.user.sub, placeId);
+    observable.subscribe(data => {
+      console.log("the data from adding place is", data)
+    })
   }
 
   ShowAll(range, filter){
@@ -73,11 +80,11 @@ export class MainComponent implements OnInit {
     });
   }
 
-  onVisited(place){
-    //add to user db user.seen update this.user
+  // onVisited(place){
+  //   //add to user db user.seen update this.user
 
-    this.placesservice.removeSeen(this.places, this.user)
-  }
+  //   this.placesservice.removeSeen(this.places, this.user)
+  // }
   
   onFilter(){
     console.log(this.filter)

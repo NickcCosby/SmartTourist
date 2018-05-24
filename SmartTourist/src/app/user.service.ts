@@ -53,11 +53,9 @@ export class UserService {
   public addUser(){
     let obs = this._http.get('/users/' + this.user.user_id);
     obs.subscribe(data => {
-      console.log("the data from find one user is", data)
       if(data['user'] === null){
         let observable = this._http.post('/users', this.user);
         observable.subscribe(datas => {
-          console.log("the data back from adding user is", datas)
         })        
       }
     })
@@ -65,6 +63,10 @@ export class UserService {
 
   public addPlace(userId, placeId){
     return this._http.put('/users/' + userId, {place: placeId})
+  }
+
+  public getInfo(userId){
+    return this._http.get('/users/'+ userId);
   }
 
   public login() {

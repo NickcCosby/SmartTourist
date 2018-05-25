@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
 import { PlacesService } from './places.service';
@@ -10,6 +10,12 @@ import { PlacesService } from './places.service';
 })
 export class AppComponent {
   title = 'SmartTourist';
+  logoImageUrl = "./InkedsmartTourist_LI.jpg";
   constructor(public auth: UserService){
   }
+
+  OnInit(){
+    
+  }
+
 }

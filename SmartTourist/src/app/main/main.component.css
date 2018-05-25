@@ -19,7 +19,7 @@ th{
 agm-map
 {
     height: 526px;
-    width: 526px;
+    width: 80%;
 }
 agm-map > div{
     border-radius: 100px;

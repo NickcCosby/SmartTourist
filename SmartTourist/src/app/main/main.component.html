@@ -4,10 +4,7 @@
     
     <h2 class="greeting" *ngIf="user">Hello, {{user.name}}!</h2>  
   </div>
-  <div *ngIf="places===undefined">
-      <h2>LOADING.....</h2>
-  </div>
-
+  
   <table *ngIf="!useMap">
     <thead>
       <tr>
@@ -24,6 +21,10 @@
       </tr>
     </tbody>
   </table>
+
+  <div *ngIf="places===undefined" style="text-align: center">
+    <h2>LOADING.....</h2>
+  </div>
   
   <div id="map_container" *ngIf="map">
     <agm-map #gm class="map" *ngIf="useMap"

@@ -19,11 +19,7 @@ th{
 agm-map
 {
     height: 526px;
-<<<<<<< HEAD
-    width: 80%;
-=======
     width: 100%;
->>>>>>> 6e2d65af9eb1b5f7034943c400fb9cd9ed980191
 }
 agm-map > div{
     border-radius: 100px;
@@ -42,9 +38,12 @@ agm-map > div{
 
 .form_types input{
     border-radius: 15px;
+    padding-left: 8px;
+    border: 1px solid grey;
 }
 select{
     border-radius: 15px;
+    padding-left: 8px;
 }
 .form_types{
     width: 50%;
@@ -67,19 +66,27 @@ select{
 }
 
 .submit{
-    padding: 5px;
+    padding: 10px;
     text-align: center;
     width: 29%;
     margin: auto;
     margin-left: 15px;
+    font-weight: 500;
+    line-height: 15px;
 }
 
 label{
     margin-left: 15px;
+    vertical-align: top;
 }
 
 .header{
     text-align: center;
-    margin-top: 15px;
+    padding-top: 15px;
 }
 /* tr:nth-child(even) {background-color:#D3D3D3} */
+
+form{
+    text-align: center;
+    vertical-align: top;
+}

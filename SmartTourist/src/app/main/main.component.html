@@ -365,7 +365,7 @@
             (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
             <agm-info-window #infoWindow>
               <h3>{{place[number].name}}</h3>
-              <p>{{place[number].distance}} mi</p>
+              <h5>{{place[number].distance}} mi</h5>
               <button class="btn" (click)="addPlace(place[number].place_id)">Been There</button>
             </agm-info-window>
           </agm-marker>

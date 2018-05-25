@@ -39,7 +39,7 @@
   </table>
   
   <div class="map_container" *ngIf="map">
-    <agm-map class="map" *ngIf="useMap"
+    <agm-map #gm class="map" *ngIf="useMap"
       [latitude]="map.lat"
       [longitude]="map.long"
       [styles]='[
@@ -360,8 +360,9 @@
       [zoomControl]="true">
       <agm-marker
         [latitude]="map.lat"
-        [longitude]="map.long">
-        <agm-info-window>
+        [longitude]="map.long"
+        >
+        <agm-info-window #infoWindow>
           <h3>YOU</h3>
         </agm-info-window>
     </agm-marker>
@@ -371,11 +372,12 @@
             [latitude]="place[number].geometry.location.lat"
             [longitude]="place[number].geometry.location.lng"
             [iconUrl]="iconUrl[place[number].types[0]]"
-            [markerDraggable]="false">
-            <agm-info-window>
+            [markerDraggable]="false"
+            (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+            <agm-info-window #infoWindow>
               <h3>{{place[number].name}}</h3>
               <p>{{place[number].distance}} mi</p>
-              <button (click)="addPlace(place[number].place_id)">Been There</button>
+              <button class="btn" (click)="addPlace(place[number].place_id)">Been There</button>
             </agm-info-window>
           </agm-marker>
         </div>

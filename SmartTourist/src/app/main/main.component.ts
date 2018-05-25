@@ -21,7 +21,14 @@ export class MainComponent implements OnInit {
   map: any;
   useMap: boolean
   userInfo: any;
-
+  userIconUrl= 
+      {
+        url: 'https://image.flaticon.com/icons/svg/608/608750.svg',
+        scaledSize: {
+          height: 40,
+          width: 40
+        }
+      }
   iconUrl= {
     amusement_park: 
     {

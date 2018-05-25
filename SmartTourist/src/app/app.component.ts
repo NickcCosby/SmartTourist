@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
 import { PlacesService } from './places.service';
+import { RequiredValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { PlacesService } from './places.service';
 })
 export class AppComponent {
   title = 'SmartTourist';
-  logoImageUrl = "./InkedsmartTourist_LI.jpg";
+  logoImageUrl = require("./InkedsmartTourist_LI.jpg");
   constructor(public auth: UserService){
   }
 

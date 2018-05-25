@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
 import { PlacesService } from './places.service';
+import { RequiredValidator } from '@angular/forms';
 
 declare var require: any;
 

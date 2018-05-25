@@ -19,9 +19,67 @@ th{
 agm-map
 {
     height: 526px;
+<<<<<<< HEAD
     width: 80%;
+=======
+    width: 100%;
+>>>>>>> 6e2d65af9eb1b5f7034943c400fb9cd9ed980191
 }
 agm-map > div{
     border-radius: 100px;
+}
+
+.logged{
+    height: 40px;
+    width: 4%;
+    margin-bottom: 14px;
+    margin-right: 5px;
+}
+
+.greeting{
+    display: inline-block;
+}
+
+.form_types input{
+    border-radius: 15px;
+}
+select{
+    border-radius: 15px;
+}
+.form_types{
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.main_cont{
+    background-image: url('cream.png');
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+}
+
+#map_container{
+    width: 63%;
+    margin: auto;
+    border: 8px solid #caded4;
+    border-radius: 10px;
+}
+
+.submit{
+    padding: 5px;
+    text-align: center;
+    width: 29%;
+    margin: auto;
+    margin-left: 15px;
+}
+
+label{
+    margin-left: 15px;
+}
+
+.header{
+    text-align: center;
+    margin-top: 15px;
 }
 /* tr:nth-child(even) {background-color:#D3D3D3} */

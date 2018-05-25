@@ -192,7 +192,6 @@ export class MainComponent implements OnInit {
       }
       if(this.places[0] == undefined){
         console.log("ARRAY EMPTIED")
-        this.places = undefined;
       }
       this.getUserInfo();
     });

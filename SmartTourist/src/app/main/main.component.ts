@@ -3,6 +3,8 @@ import { PlacesService } from '../places.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { MapTypeStyle } from '@agm/core';
+
 
 @Component({
   selector: 'app-main',
@@ -19,6 +21,89 @@ export class MainComponent implements OnInit {
   map: any;
   useMap: boolean
   userInfo: any;
+
+  iconUrl= {
+    amusement_park: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/188/188383.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    aquarium: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/870/870383.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    art_gallery:
+    {
+      url: 'https://www.flaticon.com/premium-icon/icons/svg/524/524280.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    campground: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/883/883290.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    casino: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/827/827214.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    park: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/896/896008.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    library: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/831/831433.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    movie_theater: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/3/3655.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    museum: 
+    {
+      url: 'https://image.flaticon.com/icons/png/512/8/8154.png',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+    night_club: 
+    {
+      url: 'https://image.flaticon.com/icons/svg/923/923984.svg',
+      scaledSize: {
+        height: 40,
+        width: 40
+      }
+    },
+  } 
 
   constructor(private _route: ActivatedRoute, private router: Router, private placesservice: PlacesService, private authService: UserService) { }
 

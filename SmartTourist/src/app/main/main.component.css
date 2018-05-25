@@ -18,7 +18,10 @@ th{
 }
 agm-map
 {
-    height:650px;
+    height: 526px;
+    width: 526px;
 }
-
+agm-map > div{
+    border-radius: 100px;
+}
 /* tr:nth-child(even) {background-color:#D3D3D3} */

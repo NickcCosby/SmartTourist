@@ -3,6 +3,8 @@ import { UserService } from './user.service';
 
 import { PlacesService } from './places.service';
 
+declare var require: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +12,7 @@ import { PlacesService } from './places.service';
 })
 export class AppComponent {
   title = 'SmartTourist';
-  logoImageUrl = "./InkedsmartTourist_LI.jpg";
+  logoImageUrl = require("./InkedsmartTourist_LI.jpg");
   constructor(public auth: UserService){
   }
 

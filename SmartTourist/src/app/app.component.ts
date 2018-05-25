@@ -11,7 +11,7 @@ import { RequiredValidator } from '@angular/forms';
 })
 export class AppComponent {
   title = 'SmartTourist';
-  logoImageUrl = require("./InkedsmartTourist_LI.jpg");
+  logoImageUrl = "./InkedsmartTourist_LI.jpg";
   constructor(public auth: UserService){
   }
 
